@@ -40,6 +40,29 @@ app.get("/animals/:id", async (req, res) => {
   }
 });
 
+const SERVER_B_URL = process.env.SERVER_B_URL || "http://localhost:3002";
+
+app.post("/animals/:id/adopt", async (req, res) => {
+  try {
+    const response = await fetch(`${SERVER_B_URL}/adoptions`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        animal_id: Number(req.params.id),
+        ...req.body,
+      }),
+    });
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(502).json({ error: "Adoptiopalvelu ei vastaa, yritä hetken kuluttua uudelleen" });
+  }
+});
+
+
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server A käynnissä portissa ${PORT}`);
