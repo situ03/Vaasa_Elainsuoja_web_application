@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminadmin
+      POSTGRES_DB: elainsuoja
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+
