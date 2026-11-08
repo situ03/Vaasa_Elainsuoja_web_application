@@ -9,5 +9,21 @@ services:
       - "5433:5432"
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-  
 
+  server-a:
+    build: ./server-1
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
+      SERVER_B_URL: http://server-b:3002
+    depends_on:
+      - db
+      - server-b
+
+  server-b:
+    build: ./server-2
+    environment:
+      DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
+    depends_on:
+      - db
