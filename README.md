@@ -196,14 +196,14 @@ Vastaukset: `201` onnistui (eläin varataan), `400` pakollinen kenttä puuttuu (
 ## Kuvat
 Kaikki kuvat ovat haettu https://www.pexels.com/ sivustolta. Logo luotu tekoälyllä.
 
-Photo by Matheus Bertelli from Pexels: https://www.pexels.com/photo/dogs-with-their-owners-in-a-park-16652369/
-Photo by Denitsa Kireva from Pexels: https://www.pexels.com/photo/close-up-shot-of-a-tabby-kitten-in-the-cage-13624076/
-Photo by Alberlan  Barros from Pexels: https://www.pexels.com/photo/a-dog-lying-on-the-ground-16620585/
-Photo by Dominik Gryzbon from Pexels: https://www.pexels.com/photo/adoptable-mix-breed-pothound-dog-in-trinidad-30556362/
-Photo by cottonbro studio from Pexels: https://www.pexels.com/photo/dog-owners-and-their-pet-dog-6568492/
-Photo by Doğan Alpaslan  Demir from Pexels: https://www.pexels.com/photo/mix-breed-dog-by-shrub-18672809/
-Photo by Mikhail Nilov from Pexels: https://www.pexels.com/photo/a-smiling-woman-sitting-on-the-floor-with-a-dog-7474085/
-Photo by Mikhail Nilov from Pexels: https://www.pexels.com/photo/back-view-of-a-man-holding-a-dog-7474354/
+  - Photo by Matheus Bertelli from Pexels: https://www.pexels.com/photo/dogs-with-their-owners-in-a-park-16652369/
+  - Photo by Denitsa Kireva from Pexels: https://www.pexels.com/photo/close-up-shot-of-a-tabby-kitten-in-the-cage-13624076/
+  - Photo by Alberlan  Barros from Pexels: https://www.pexels.com/photo/a-dog-lying-on-the-ground-16620585/
+  - Photo by Dominik Gryzbon from Pexels: https://www.pexels.com/photo/adoptable-mix-breed-pothound-dog-in-trinidad-30556362/
+  - Photo by cottonbro studio from Pexels: https://www.pexels.com/photo/dog-owners-and-their-pet-dog-6568492/
+  - Photo by Doğan Alpaslan  Demir from Pexels: https://www.pexels.com/photo/mix-breed-dog-by-shrub-18672809/
+  - Photo by Mikhail Nilov from Pexels: https://www.pexels.com/photo/a-smiling-woman-sitting-on-the-floor-with-a-dog-7474085/
+  - Photo by Mikhail Nilov from Pexels: https://www.pexels.com/photo/back-view-of-a-man-holding-a-dog-7474354/
 
 ## Fontit
 
