@@ -415,12 +415,13 @@ img { max-width: 100%; }
 /* ---------- Prosessi ---------- */
 .process { background: var(--sky); }
 .process > .wave { margin-top: -1px; }
-.process h2 { margin-bottom: 48px; }
+.process h2:has(+ p) { margin-bottom: 20px; }
+.process h2 + p { max-width: 48em; margin-bottom: 56px; color: var(--ink-soft); }
 .steps {
   list-style: none;
   margin: 0; padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   position: relative;
 }
@@ -446,7 +447,7 @@ img { max-width: 100%; }
   position: relative;
 }
 .steps li:nth-child(2) .step-num { background: var(--nose); }
-.steps li:nth-child(3) .step-num { background: #fff; }
+.steps li:nth-child(4) .step-num { background: var(--leaf); color: #fff; }
 
 /* ---------- Footer ---------- */
 .site-footer { position: relative; background: var(--ink); color: #D8D2E4; margin-top: 56px; }
