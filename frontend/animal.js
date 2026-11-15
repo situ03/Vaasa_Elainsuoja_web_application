@@ -74,6 +74,21 @@ function showError(el, text) {
   el.textContent = text;
 }
 
+// Virheilmoitus puuttuvien kenttien mukaan
+const FIELD_NAMES = { applicant_name: "nimi", email: "sähköposti", message: "kertomus itsestäsi" };
+const SINGLE_MESSAGES = {
+  applicant_name: "Kirjoita vielä nimesi.",
+  email: "Kirjoita vielä sähköpostiosoitteesi.",
+  message: "Kerro vielä vähän itsestäsi ja kodistasi.",
+};
+
+function missingMessage(missing) {
+  if (missing.length === 1) return SINGLE_MESSAGES[missing[0]];
+  const names = missing.map((k) => FIELD_NAMES[k]);
+  const list = names.slice(0, -1).join(", ") + " ja " + names.at(-1);
+  return `Täytä vielä: ${list}.`;
+}
+
 function setupForm(animal) {
   const form = document.getElementById("adopt-form");
   const errorEl = document.getElementById("form-error");
@@ -86,10 +101,11 @@ function setupForm(animal) {
     const data = Object.fromEntries(new FormData(form));
     Object.keys(data).forEach((k) => (data[k] = data[k].trim()));
 
-    if (!data.applicant_name || !data.email || !data.message) {
-      showError(errorEl, "Täytä nimi, sähköposti ja kerro vähän itsestäsi.");
-      const firstEmpty = ["applicant_name", "email", "message"].find((k) => !data[k]);
-      form[firstEmpty].focus();
+    // Kerrotaan vain ne kentät, jotka oikeasti puuttuvat
+    const missing = ["applicant_name", "email", "message"].filter((k) => !data[k]);
+    if (missing.length) {
+      showError(errorEl, missingMessage(missing));
+      form[missing[0]].focus();
       return;
     }
     if (!form.email.checkValidity()) {
