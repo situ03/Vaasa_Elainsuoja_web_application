@@ -40,7 +40,7 @@ Server A ja Server B ovat kaksi erillistä Node.js/Express-sovellusta. Niillä o
 Vaatimukset: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (sisältää Docker Composen) ja Git.
 
 ```bash
-git clone https://github.com/situ03/Vaasa_Elainsuoja_web_application.git
+git clone https://github.com/situ03/Vaasa_Elainsuoja_web_application.git <repon-kansio>
 cd <repon-kansio>
 docker compose up --build
 ```
@@ -73,7 +73,7 @@ Vaatimukset:
 ### 1. Lataa koodi
 
 ```bash
-git clone https://github.com/situ03/Vaasa_Elainsuoja_web_application.git
+git clone https://github.com/situ03/Vaasa_Elainsuoja_web_application.git <repon-kansio>
 cd <repon-kansio>
 ```
 
