@@ -15,16 +15,16 @@
 }
 
 :root {
-  --ink: #2A2140;        /* mustikka: teksti */
-  --ink-soft: #5E5673;   /* toissijainen teksti */
-  --sun: #FFC83D;        /* voikukka: pääväri */
+  --ink: #2A2140;       
+  --ink-soft: #5E5673;   
+  --sun: #FFC83D;        
   --sun-pale: #FFF1C2;
-  --nose: #FF8BA0;       /* tassunpohja: korostus */
+  --nose: #FF8BA0;       
   --nose-pale: #FFE1E7;
-  --leaf: #2E7D5B;       /* kuusi: vapaana */
+  --leaf: #2E7D5B;       
   --leaf-pale: #DDF1E6;
-  --sky: #D9EEF8;        /* taivas: rauhalliset osiot */
-  --milk: #FFFEFA;       /* sivun tausta */
+  --sky: #D9EEF8;        
+  --milk: #FFFEFA;       
   --line: #E7E1EF;
   --error: #C2273D;
 
@@ -159,6 +159,7 @@ img { max-width: 100%; }
 }
 .btn:disabled { cursor: wait; }
 
+
 .wave { display: block; width: 100%; height: 56px; }
 
 /* ---------- Hero ---------- */
@@ -189,7 +190,7 @@ img { max-width: 100%; }
   transform: rotate(2.5deg);
 }
 .hero-photo::before {
-  /* teippi */
+
   content: "";
   position: absolute;
   z-index: 2;
@@ -235,6 +236,7 @@ img { max-width: 100%; }
   box-shadow: 0 6px 14px -6px rgba(42, 33, 64, 0.35);
 }
 
+
 .paw-trail {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -258,7 +260,6 @@ img { max-width: 100%; }
 .paw:nth-child(5) { left: 27%; transform: rotate(82deg);  animation-delay: 1.22s; }
 .paw:nth-child(6) { left: 33%; transform: rotate(96deg);  animation-delay: 1.4s; }
 
-/* ---------- Eläinlista ---------- */
 .list-header {
   display: flex;
   justify-content: space-between;
@@ -285,6 +286,7 @@ img { max-width: 100%; }
 .filter:active { transform: scale(0.94); }
 .filter.active { background: var(--sun); }
 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -306,6 +308,7 @@ img { max-width: 100%; }
 .card:nth-child(3n) { transform: rotate(-0.5deg); }
 .card:hover { transform: rotate(0deg) translateY(-6px); box-shadow: 0 2px 4px rgba(42, 33, 64, 0.1), 0 24px 36px -12px rgba(42, 33, 64, 0.35); }
 .card::before {
+
   content: "";
   position: absolute;
   z-index: 2;
@@ -336,6 +339,7 @@ img { max-width: 100%; }
 .card-body p { color: var(--ink-soft); font-size: 16px; }
 .card-body .breed { margin-bottom: 16px; font-size: 15px; }
 .card-body .btn { margin-top: auto; min-height: 46px; width: 100%; }
+
 
 .badge {
   position: absolute;
@@ -415,6 +419,8 @@ img { max-width: 100%; }
 /* ---------- Prosessi ---------- */
 .process { background: var(--sky); }
 .process > .wave { margin-top: -1px; }
+.process h2 { margin-bottom: 48px; }
+
 .process h2:has(+ p) { margin-bottom: 20px; }
 .process h2 + p { max-width: 48em; margin-bottom: 56px; color: var(--ink-soft); }
 .steps {
@@ -422,17 +428,20 @@ img { max-width: 100%; }
   margin: 0; padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 32px;
   position: relative;
 }
-.steps::before {
+
+.steps li:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 31px; left: 32px; right: 32px;
+  top: 31px;
+  left: 76px;
+  right: -20px;
   border-top: 3px dashed rgba(42, 33, 64, 0.35);
 }
 .steps li { position: relative; display: flex; flex-direction: column; gap: 8px; }
-.steps strong { font-size: 20px; margin-top: 12px; }
+.steps strong { font-size: 20px; margin-top: 16px; }
 .steps span.muted { max-width: 22em; }
 .step-num {
   width: 64px; height: 64px;
@@ -447,6 +456,7 @@ img { max-width: 100%; }
   position: relative;
 }
 .steps li:nth-child(2) .step-num { background: var(--nose); }
+.steps li:nth-child(3) .step-num { background: #fff; }
 .steps li:nth-child(4) .step-num { background: var(--leaf); color: #fff; }
 
 /* ---------- Footer ---------- */
@@ -661,7 +671,6 @@ img { max-width: 100%; }
 .timeline strong { font-size: 20px; display: block; margin-top: 7px; margin-bottom: 4px; }
 .timeline p { color: var(--ink-soft); max-width: 36em; }
 
-
 .values-section { background: var(--sun-pale); }
 .values-section h2 { margin-bottom: 48px; }
 .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
@@ -679,7 +688,7 @@ img { max-width: 100%; }
 .value:nth-child(2) { background: var(--nose-pale); transform: rotate(1.2deg) translateY(10px); }
 .value:nth-child(3) { background: var(--sky); transform: rotate(-0.6deg); }
 .value::before {
-  /* nasta */
+
   content: "";
   position: absolute;
   top: 12px; left: 50%;
@@ -810,7 +819,7 @@ img { max-width: 100%; }
 .decision-approved { background: var(--leaf-pale); color: var(--leaf); }
 .decision-rejected { background: #EEEAF3; color: var(--ink-soft); }
 
-
+/* ---------- Takaisin ylös -nappi ---------- */
 .to-top {
   position: fixed;
   right: 24px; bottom: 24px;
@@ -867,7 +876,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .values { grid-template-columns: 1fr; max-width: 460px; }
   .value:nth-child(2) { transform: rotate(1.2deg); }
   .steps { grid-template-columns: 1fr; gap: 28px; }
-  .steps::before { top: 32px; bottom: 32px; left: 31px; right: auto; border-top: none; border-left: 3px dashed rgba(42, 33, 64, 0.35); }
+  .steps li:not(:last-child)::after { top: 76px; bottom: -20px; left: 31px; right: auto; border-top: none; border-left: 3px dashed rgba(42, 33, 64, 0.35); }
   .steps li { display: grid; grid-template-columns: 64px 1fr; column-gap: 20px; row-gap: 2px; }
   .steps li .step-num { grid-row: span 2; }
   .steps strong { margin-top: 6px; }
@@ -896,6 +905,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .done-table th, .done-table td { padding: 10px; font-size: 14px; }
 }
 
+/* Käyttäjä on pyytänyt käyttöjärjestelmästä vähemmän liikettä */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
