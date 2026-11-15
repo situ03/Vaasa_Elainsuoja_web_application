@@ -8,7 +8,7 @@ CREATE TABLE animals (
   breed TEXT,
   description TEXT,
   image_url TEXT,
-  -- available = vapaana, reserved = hakemus jätetty (varattu), adopted = adoptio valmis
+
   status TEXT NOT NULL DEFAULT 'available' CHECK (status IN ('available', 'reserved', 'adopted'))
 );
 
@@ -18,24 +18,21 @@ CREATE TABLE adoptions (
   applicant_name TEXT NOT NULL,
   email TEXT NOT NULL,
   phone TEXT,
-  message TEXT NOT NULL,  -- hakijan kertomus itsestään ja kodistaan (pakollinen)
-  -- pending = odottaa käsittelyä, approved = hyväksytty, rejected = hylätty
+  message TEXT NOT NULL, 
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
   created_at TIMESTAMP DEFAULT NOW(),
-  decided_at TIMESTAMP  -- milloin henkilökunta käsitteli hakemuksen
+  decided_at TIMESTAMP  -
 );
 
--- Yhdellä eläimellä voi olla vain yksi voimassa oleva hakemus (odottava tai hyväksytty).
--- Hylätyt hakemukset jäävät historiaan, ja eläimelle voi hakea uudelleen.
+
 CREATE UNIQUE INDEX one_active_adoption_per_animal
   ON adoptions (animal_id)
   WHERE status IN ('pending', 'approved');
 
--- Kuvat ovat frontend-kansiossa. Jos kuvatiedostoa ei löydy, sivu näyttää placeholder-kuvan.
 INSERT INTO animals (name, type, age, breed, description, image_url) VALUES
-('Miuku', 'kissa', 3, 'Maatiainen', 'Rauhallinen sylikissa, tulee toimeen lasten kanssa.', '/miuku.jpg'),
-('Rekku', 'koira', 5, 'Labradorinnoutaja', 'Energinen ja ystävällinen, rakastaa lenkkeilyä.', '/rekku.jpg'),
-('Nööpi', 'kissa', 1, 'Norjalainen metsäkissa', 'Leikkisä nuori kissa, sopii aktiiviseen kotiin.', '/noopi.jpg'),
-('Haukku', 'koira', 8, 'Sekarotuinen', 'Seniorikoira, joka etsii rauhallista kotia.', '/haukku.jpg'),
-('Pörrö', 'kissa', 6, 'Persialainen', 'Ujo aluksi, mutta lämpenee nopeasti.', '/porro.jpg'),
-('Tessu', 'koira', 2, 'Bordercollie', 'Älykäs ja oppii nopeasti, tarvitsee tekemistä.', '/tessu.jpg');
+('Miuku', 'kissa', 3, 'Maatiainen', 'Miuku on rauhallinen tyttö kissa, tulee toimeen lasten kanssa. Hän on siis kunnon sohvaperuna. Miukulla on ollut pieniä silmien terveysongelmia sillä hän on asunut kadulla pienestä asti, joten ne vaativat pientä hoitoa.', '/miuku.jpg'),
+('Rekku', 'koira', 5, 'Labradorinnoutaja', 'Energinen ja ystävällinen nuori poika, rakastaa lenkkeilyä. Olisi mielellään useamman koiran taloudessa sillä hän tulee hyvin toimeen muiden koirien kanssa.', '/rekku.jpg'),
+('Nööpi', 'kissa', 1, 'Norjalainen metsäkissa', 'Leikkisä nuori naaras kissa, sopii aktiiviseen kotiin.', '/noopi.jpg'),
+('Haukku', 'koira', 8, 'Sekarotuinen', 'Uros seniorikoira, joka etsii rauhallista kotia. Hän voi sinun kanssa katsella elokuvia ja sarjoja päivät pitkät sohvalla.', '/haukku.jpg'),
+('Pörrö', 'kissa', 6, 'Persialainen', 'Pörrö on ujo tyttö aluksi, mutta lämpenee nopeasti. Pörrö ei kuitenkaan pidä muista lemmikeistä tai eläimistä, joten hänen tulisi olla ainoa lemmikki kotitaloudessa.', '/porro.jpg'),
+('Tessu', 'koira', 2, 'Bordercollie', 'Tessu on älykäs nuori uros ja hän oppii nopeasti, eli tarvitsee tekemistä. Tessu siis sopii aktiiviselle perheelle ja kotiin jossa olisi oma piha missä juosta.', '/tessu.jpg');
