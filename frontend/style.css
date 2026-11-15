@@ -418,7 +418,7 @@ img { max-width: 100%; }
 
 /* ---------- Prosessi ---------- */
 .process { background: var(--sky); }
-.process > .wave { margin-top: -1px; }
+.process > .section { padding-bottom: 150px; }
 .process h2 { margin-bottom: 48px; }
 
 .process h2:has(+ p) { margin-bottom: 20px; }
@@ -880,6 +880,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .steps li { display: grid; grid-template-columns: 64px 1fr; column-gap: 20px; row-gap: 2px; }
   .steps li .step-num { grid-row: span 2; }
   .steps strong { margin-top: 6px; }
+  .process > .section { padding-bottom: 120px; }
 }
 
 /* ---------- Mobiili ---------- */
