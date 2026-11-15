@@ -1,6 +1,7 @@
 # Vaasan Eläinsuoja – adoptiosovellus
-
-Verkkosovellus, jossa voi selata adoptoitavia eläimiä ja jättää adoptiohakemuksen.
+Web-palvelujen toteutus kurssin projektityö.
+Tekijänä: Sini-Tuuli Laakso
+Aihe: Verkkosovellus, jossa voi selata adoptoitavia eläimiä ja jättää adoptiohakemuksen.
 
 ## Arkkitehtuuri
 
@@ -158,6 +159,7 @@ Server A löytää Server B:n oletuksena osoitteesta `http://localhost:3002`. Os
 ## REST API
 
 ### Server A (http://localhost:3001)
+(Eli jos haluat esimerkiksi nähdä kaikki eläimet voit hakea tiedot tällä osoitteella: https://localhost:3001/animals )
 
 | Metodi | Polku | Kuvaus |
 |--------|-------|--------|
