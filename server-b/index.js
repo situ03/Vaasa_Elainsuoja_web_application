@@ -25,6 +25,16 @@ app.post("/adoptions", async (req, res) => {
   if (!Number.isInteger(animal_id) || animal_id < 1) {
     return res.status(400).json({ error: "Virheellinen eläimen id" });
   }
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!EMAIL_RE.test(email.trim())) {
+    return res.status(400).json({ error: "Tarkista sähköpostiosoite" });
+  }
+  if (phone != null && phone !== "") {
+    const digits = typeof phone === "string" ? phone.replace(/[\s-]/g, "") : "";
+    if (!/^\+?\d{7,13}$/.test(digits)) {
+      return res.status(400).json({ error: "Puhelinnumerossa pitää olla 7–13 numeroa" });
+    }
+  }
 
   let client;
   try {
