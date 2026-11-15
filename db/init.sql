@@ -1,16 +1,19 @@
+-- Ajetaan automaattisesti, kun Postgres-kontti käynnistyy ensimmäisen kerran
+
 CREATE TABLE animals (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   type TEXT NOT NULL CHECK (type IN ('kissa', 'koira')),
-  age INT,
+  age INT CHECK (age >= 0),
   breed TEXT,
   description TEXT,
   image_url TEXT,
-  status TEXT NOT NULL DEFAULT 'available'
+  status TEXT NOT NULL DEFAULT 'available' CHECK (status IN ('available', 'adopted'))
 );
 
 CREATE TABLE adoptions (
   id SERIAL PRIMARY KEY,
+  -- UNIQUE: yhdelle eläimelle voi tallentua vain yksi adoptio
   animal_id INT NOT NULL UNIQUE REFERENCES animals(id),
   applicant_name TEXT NOT NULL,
   email TEXT NOT NULL,
@@ -26,7 +29,3 @@ INSERT INTO animals (name, type, age, breed, description, image_url) VALUES
 ('Haukku', 'koira', 8, 'Sekarotuinen', 'Seniorikoira, joka etsii rauhallista kotia.', NULL),
 ('Pörrö', 'kissa', 6, 'Persialainen', 'Ujo aluksi, mutta lämpenee nopeasti.', NULL),
 ('Tessu', 'koira', 2, 'Bordercollie', 'Älykäs ja oppii nopeasti, tarvitsee tekemistä.', NULL);
-
-
-
-
