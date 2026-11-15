@@ -1,29 +1,48 @@
 services:
   db:
-    image: postgres:16
+    image: postgres:16-alpine
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: adminadmin
       POSTGRES_DB: elainsuoja
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - "5433:5432"
-    volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-  server-a:
-    build: ./server-1
-    ports:
-      - "3001:3001"
-    environment:
-      DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
-      SERVER_B_URL: http://server-b:3002
-    depends_on:
-      - db
-      - server-b
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d elainsuoja"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
 
   server-b:
     build: ./server-2
     environment:
       DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
+      PORT: 3002
+    ports:
+      - "3002:3002"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
+  server-a:
+    build: ./server-1
+    environment:
+      DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
+      SERVER_B_URL: http://server-b:3002
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+      server-b:
+        condition: service_started
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - server-a
