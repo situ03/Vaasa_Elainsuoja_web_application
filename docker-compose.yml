@@ -16,7 +16,7 @@ services:
       retries: 20
 
   server-b:
-    build: ./server-2
+    build: ./server-b
     environment:
       DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
       PORT: 3002
@@ -27,7 +27,7 @@ services:
         condition: service_healthy
 
   server-a:
-    build: ./server-1
+    build: ./server-a
     environment:
       DATABASE_URL: postgres://admin:adminadmin@db:5432/elainsuoja
       SERVER_B_URL: http://server-b:3002
