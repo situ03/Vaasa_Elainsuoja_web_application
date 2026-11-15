@@ -21,7 +21,7 @@ CREATE TABLE adoptions (
   message TEXT NOT NULL, 
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
   created_at TIMESTAMP DEFAULT NOW(),
-  decided_at TIMESTAMP  -
+  decided_at TIMESTAMP 
 );
 
 
